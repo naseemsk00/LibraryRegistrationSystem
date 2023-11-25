@@ -1,0 +1,9 @@
+com\mycompany\libraryregistrationsystem\BirthDate.class
+com\mycompany\libraryregistrationsystem\Journal.class
+com\mycompany\libraryregistrationsystem\Author.class
+com\mycompany\libraryregistrationsystem\Loan.class
+com\mycompany\libraryregistrationsystem\Magazine.class
+com\mycompany\libraryregistrationsystem\Student.class
+com\mycompany\libraryregistrationsystem\Book.class
+com\mycompany\libraryregistrationsystem\Display.class
+com\mycompany\libraryregistrationsystem\LibraryRegistrationSystem.class
