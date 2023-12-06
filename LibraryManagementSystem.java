@@ -1,9 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
-
-
 // naseem skafi && osaid mujahed
 
 package LibraryRegistrationSystem;
@@ -41,8 +35,9 @@ public class LibraryManagementSystem {
             System.out.println("\nMain Menu");
             System.out.println("1. Add Book");
             System.out.println("2. Search Book");
-            System.out.println("3. Check Book Loans");
-            System.out.println("4. Exit");
+            System.out.println("3. Loan a Book");
+            System.out.println("4. Check Book Loans");
+            System.out.println("5. Exit");
             
             
 
@@ -57,9 +52,12 @@ public class LibraryManagementSystem {
                     searchBook();
                     break;
                 case 3:
-                    checkBookLoans();
+                    loanBook(); 
                     break;
                 case 4:
+                    checkBookLoans();
+                    break;
+                case 5:
                     System.out.println("Thank you for using the Library Management System.");
                     System.exit(0);
                 default:
@@ -190,28 +188,64 @@ public class LibraryManagementSystem {
     //👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
      
  
-     
+ 
+ 
+ 
+ 
+ 
  
      //case 3
  
+     //👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+    private static void loanBook() {
+    scanner.nextLine(); // Clear the buffer
+    System.out.print("Enter book title: ");
+    String title = scanner.nextLine();
+
+    boolean found = false;
+    for (Book book : books) {
+        if (book.getTitle().equalsIgnoreCase(title)) {
+            found = true;
+            if (!book.isLoaned()) {
+                book.loanOut();
+                System.out.println("Book loaned successfully.");
+            } else {
+                System.out.println("This book is already loaned.");
+            }
+            break;
+        }
+    }
+
+    if (!found) {
+        System.out.println("Book not found.");
+    }
+}
+    //👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
+ 
+      
+      
+      
+      
+      
+      
+      
+     //case 4
+ 
       //👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
  
-        private static void checkBookLoans() {
+      private static void checkBookLoans() {
     boolean anyBookLoanedOut = false;
 
     for (Book book : books) {
-        if (book.inLoan()) {
-            System.out.println(book.getInfo());
-            anyBookLoanedOut = true;
-        }
+        String loanStatus = book.isLoaned() ? "Loaned" : "Available";
+        System.out.println(book.getInfo() + " - Status: " + loanStatus);
+        anyBookLoanedOut = anyBookLoanedOut || book.isLoaned();
     }
 
     if (!anyBookLoanedOut) {
         System.out.println("No books are currently on loan.");
     }
-        
-   
-        }
+}
        //👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
     
    
